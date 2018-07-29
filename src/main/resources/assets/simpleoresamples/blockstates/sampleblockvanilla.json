@@ -1,0 +1,193 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "simpleoresamples:sample",
+    "transform": "forge:default-block",
+    "textures": {
+    	"particle": "minecraft:blocks/stone",
+    	"ore": "simpleoresamples:blocks/base"
+    }
+  },
+  "variants": {
+    "variant=coal":
+    	[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=iron":  
+    	[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=gold":  
+    	[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=copper":  
+   		[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=tin":  
+   		[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=silver":  
+   		[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=lead":  
+   		[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=uranium":  
+   		[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=zinc":  
+   		[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=aluminium":  
+   		[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=tungsten":  
+   		[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		],
+    "variant=nickel":  
+   		[ 
+			{ "model":"simpleoresamples:sample" },
+			{ "model":"simpleoresamples:sample", "y": 90 },
+			{ "model":"simpleoresamples:sample", "y": 180 },
+			{ "model":"simpleoresamples:sample", "y": 270 },
+			{ "model":"simpleoresamples:sample2" },
+			{ "model":"simpleoresamples:sample2", "y": 90 },
+			{ "model":"simpleoresamples:sample2", "y": 180 },
+			{ "model":"simpleoresamples:sample2", "y": 270 },
+			{ "model":"simpleoresamples:sample3" },
+			{ "model":"simpleoresamples:sample3", "y": 90 },
+			{ "model":"simpleoresamples:sample3", "y": 180 },
+			{ "model":"simpleoresamples:sample3", "y": 270 }
+		]
+   }
+}

@@ -1,0 +1,22 @@
+
+tile.sampleblockvanilla_coal.name=Coal Surface Sample
+tile.sampleblockvanilla_iron.name=Iron Surface Sample
+tile.sampleblockvanilla_gold.name=Gold Surface Sample
+tile.sampleblockvanilla_copper.name=Copper Surface Sample
+tile.sampleblockvanilla_tin.name=Tin Surface Sample
+tile.sampleblockvanilla_silver.name=Silver Surface Sample
+tile.sampleblockvanilla_lead.name=Lead Surface Sample
+tile.sampleblockvanilla_uranium.name=Uranium Surface Sample
+tile.sampleblockvanilla_zinc.name=Zinc Surface Sample
+tile.sampleblockvanilla_aluminium.name=Aluminium Surface Sample
+tile.sampleblockvanilla_tungsten.name=Tungsten Surface Sample
+tile.sampleblockvanilla_nickel.name=Nickel Surface Sample
+
+tile.sampleblockshiny_diamond.name=Diamond Surface Sample
+tile.sampleblockshiny_emerald.name=Emerald Surface Sample
+tile.sampleblockshiny_lapis.name=Lapis Surface Sample
+tile.sampleblockshiny_redstone.name=Redstone Surface Sample
+tile.sampleblockshiny_ruby.name=Ruby Surface Sample
+tile.sampleblockshiny_sapphire.name=Sapphire Surface Sample
+tile.sampleblockshiny_platinum.name=Platinum Surface Sample
+tile.sampleblockshiny_iridium.name=Iridium Surface Sample
