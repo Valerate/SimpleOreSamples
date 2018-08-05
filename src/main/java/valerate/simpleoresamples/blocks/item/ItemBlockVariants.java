@@ -3,12 +3,17 @@ package valerate.simpleoresamples.blocks.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import valerate.simpleoresamples.util.IMetaName;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import valerate.simpleoresamples.world.OreDict;
 
 public class ItemBlockVariants extends ItemBlock {
 
-	public ItemBlockVariants(Block block) {
+	private String type;
+	public ItemBlockVariants(Block block, String type) {
 		super(block);
+		this.type=type;
 		setHasSubtypes(true);
 		setMaxDamage(0);
 	}
@@ -22,6 +27,12 @@ public class ItemBlockVariants extends ItemBlock {
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName() + "_" + ((IMetaName)this.block).getSpecialName(stack);
+		return "oresample";
+	}
+	
+	@Override
+    @SideOnly(Side.CLIENT)
+    public String getItemStackDisplayName(ItemStack stack) {
+        return "Ore Sample (" + this.type + ")";
 	}
 }

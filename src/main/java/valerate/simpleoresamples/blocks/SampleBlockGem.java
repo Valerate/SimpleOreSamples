@@ -2,16 +2,12 @@ package valerate.simpleoresamples.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockFaceShape;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
@@ -21,37 +17,38 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import valerate.simpleoresamples.SimpleOreSamples;
-import valerate.simpleoresamples.blocks.Types.EnumTypeShiny;
 import valerate.simpleoresamples.blocks.item.ItemBlockVariants;
 import valerate.simpleoresamples.init.BlockInit;
 import valerate.simpleoresamples.init.ItemInit;
 import valerate.simpleoresamples.util.IHasModel;
 import valerate.simpleoresamples.util.IMetaName;
 
-public class SampleBlockShiny extends Block implements IMetaName,IHasModel {
+public class SampleBlockGem extends Block implements IMetaName,IHasModel {
 
-	public static final PropertyEnum<Types.EnumTypeShiny> VARIANT = PropertyEnum.<Types.EnumTypeShiny>create("variant", Types.EnumTypeShiny.class);
 	public static final AxisAlignedBB SampleBlockAABB = new AxisAlignedBB(0.25D, 0, 0.25D, 0.75D, 0.125D, 0.75D);
 	
-	public static SampleBlockShiny INSTANCE;
+	public SampleBlockGem INSTANCE;
+	private int color;
+	private String ore;
 	
-	public SampleBlockShiny(String name) {
+	public SampleBlockGem(String name, String ore, int color) {
 		super(Material.ROCK);
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT,  Types.EnumTypeShiny.DIAMOND));
+		this.color = color;
+		this.ore = ore;
 		
 		BlockInit.BLOCKS.add(this);
-		ItemInit.ITEMS.add(new ItemBlockVariants(this).setRegistryName(this.getRegistryName()));
+		ItemInit.ITEMS.add(new ItemBlockVariants(this,this.ore).setRegistryName(this.getRegistryName()));
 	}
 	
-	public void placeSample(World world, int x, int z, Types.EnumTypeShiny sample) {
+	public void placeSample(World world, int x, int z) {
 		BlockPos surface = world.getTopSolidOrLiquidBlock(new BlockPos(x, 64, z));
 
 		if (surface.getY() > 1 && surface.getY() < 255) {
-			if (world.isAirBlock(surface) && BlockInit.SAMPLE_BLOCK_VANILLA.canPlaceBlockAt(world, surface)) {
-				world.setBlockState(surface, this.getDefaultState().withProperty(VARIANT, sample));
+			if (world.isAirBlock(surface) && this.canPlaceBlockAt(world, surface)) {
+				world.setBlockState(surface, this.getDefaultState());
 			}
 		}
 	}
@@ -60,24 +57,7 @@ public class SampleBlockShiny extends Block implements IMetaName,IHasModel {
 	@Override
 	public String getSpecialName(ItemStack stack) {
 		
-		return EnumTypeShiny.values()[stack.getItemDamage()].getName();
-	}
-	
-	@Override
-	public int damageDropped(IBlockState state) {
-		
-		return ((Types.EnumTypeShiny)state.getValue(VARIANT)).getMeta();
-	}
-	
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		
-		return ((Types.EnumTypeShiny)state.getValue(VARIANT)).getMeta();
-	}
-	
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(VARIANT, Types.EnumTypeShiny.byMetadata(meta));
+		return this.ore;
 	}
 	
 	@Override
@@ -93,27 +73,11 @@ public class SampleBlockShiny extends Block implements IMetaName,IHasModel {
 		return new ItemStack(state.getBlock(), 1, this.getMetaFromState(state));
 	}
 	
-	@Override
-	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-
-		for(EnumTypeShiny variant: Types.EnumTypeShiny.values()) {
-			items.add(new ItemStack(this,1,variant.getMeta()));
-		}
-	}
-	
-	@Override
-	protected BlockStateContainer createBlockState() {
-		
-			return new BlockStateContainer(this, new IProperty[] {VARIANT});
-	}
 	
 	
 	@Override
 	public void registerModels() {
-		for (int i = 0; i < Types.EnumTypeShiny.values().length; i++) {
-			SimpleOreSamples.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "sample_" + EnumTypeShiny.values()[0].getName(), "inventory");
-		}
-		
+		SimpleOreSamples.proxy.registerBlockRenderer(this, "sampleblockgem");
 	}
 	
 	@Override
@@ -175,24 +139,39 @@ public class SampleBlockShiny extends Block implements IMetaName,IHasModel {
 		return SampleBlockAABB;
 	}
 
+	public String getOre() {
+		return ore;
+	}
+	
+	public int getColor() {
+		return color;
+	}
 	
 	////////////////////////////////////////
 	
 	public static class ColorHandler implements IBlockColor, IItemColor {
 
 		public int getColorFromItemstack(ItemStack stack, int tintIndex) {
-			return (tintIndex == 0 ? -1 : Types.EnumTypeShiny.values()[stack.getItemDamage()].getColor());
+			if (Block.getBlockFromItem(stack.getItem()) instanceof SampleBlockGem) {
+				return (int)((SampleBlockGem) Block.getBlockFromItem(stack.getItem())).getColor();
+			}
+			return 0;
 		}
 
 		@Override
 		public int colorMultiplier(ItemStack stack, int tintIndex) {
-			return Types.EnumTypeShiny.values()[stack.getItemDamage()].getColor();
+			if (Block.getBlockFromItem(stack.getItem()) instanceof SampleBlockGem) {
+				return (int)((SampleBlockGem) Block.getBlockFromItem(stack.getItem())).getColor();
+			}
+			return 0;
 		}
 
 		@Override
 		public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-			int color = (tintIndex == 0 ? -1 :  Types.EnumTypeShiny.values()[state.getBlock().getMetaFromState(state)].getColor()  );
-			return color;
+			if (state.getBlock() instanceof SampleBlockGem) {
+				return (tintIndex == 0 ? -1 : (int)((SampleBlockGem) state.getBlock()).getColor());
+			}
+			return 0;
 		}
 	}
 

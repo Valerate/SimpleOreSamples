@@ -11,11 +11,15 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import valerate.simpleoresamples.proxy.CommonProxy;
 import valerate.simpleoresamples.util.*;
 import net.minecraftforge.fml.common.SidedProxy;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = BaseReferances.MODID, name = BaseReferances.NAME, version = BaseReferances.VERSION)
 public class SimpleOreSamples {
 	
 	public static File config;
+	
+	public static final Logger LOGGER = LogManager.getLogger(BaseReferances.MODID);
 	
 	@Instance
 	public static SimpleOreSamples instance;

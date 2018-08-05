@@ -1,0 +1,24 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "simpleoresamples:sample",
+    "transform": "forge:default-block",
+    "textures": {
+    	"particle": "minecraft:blocks/stone",
+    	"ore": "simpleoresamples:blocks/base"
+    }
+  },
+  "variants": {
+	"normal": 
+		[
+			{ "model":"simpleoresamples:gemSample" },
+			{ "model":"simpleoresamples:gemSample", "y": 90 },
+			{ "model":"simpleoresamples:gemSample", "y": 180 },
+			{ "model":"simpleoresamples:gemSample", "y": 270 },
+			{ "model":"simpleoresamples:gemSample2" },
+			{ "model":"simpleoresamples:gemSample2", "y": 90 },
+			{ "model":"simpleoresamples:gemSample2", "y": 180 },
+			{ "model":"simpleoresamples:gemSample2", "y": 270 }
+		]
+   }
+}
