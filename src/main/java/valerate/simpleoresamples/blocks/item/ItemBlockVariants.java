@@ -6,11 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import valerate.simpleoresamples.world.OreDict;
 
 public class ItemBlockVariants extends ItemBlock {
 
 	private String type;
+	
 	public ItemBlockVariants(Block block, String type) {
 		super(block);
 		this.type=type;

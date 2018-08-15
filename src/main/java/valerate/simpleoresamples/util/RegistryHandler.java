@@ -69,6 +69,7 @@ public class RegistryHandler {
 	public static void PostInitRegistries(FMLPostInitializationEvent e) {
 		SimpleOreSamples.proxy.registerRenderers();
 		OreDict.init();
+		BlockInit.fixDrops();
 	}
 	
 }

@@ -22,7 +22,6 @@ public class OreDict {
 		
 		for (SampleBlockOre sample: BlockInit.SAMPLEBLOCKORE.values()) {
 			if (sample.getOre().equals("Aluminium") || sample.getOre().equals("Aluminum") || sample.getOre().equals("Bauxite")) {
-				System.out.println("Found " + sample.getOre());
 				
 				if (OreDictionary.doesOreNameExist("oreAluminium"))	{ registerOre("oreAluminium", sample.getOre());}
 				if (OreDictionary.doesOreNameExist("oreAluminum"))  { registerOre("oreAluminum", sample.getOre());}
