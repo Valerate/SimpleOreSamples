@@ -70,19 +70,24 @@ public class BlockInit {
 				if (dropType.equals("nugget") || dropType.equals("bar") || dropType.equals("dust") || dropType.equals("plate") || dropType.equals("tinyPile") || dropType.equals("block")|| dropType.equals("gem") || dropType.equals("crystal") ) {
 					
 					if (sample.getOre().equals("Aluminium") || sample.getOre().equals("Aluminum") || sample.getOre().equals("Bauxite")) {
-						if (OreDictionary.doesOreNameExist(dropType+"Aluminium")) 
-							drop = OreDictionary.getOres(dropType+"Aluminium").get(0);
-						else if (OreDictionary.doesOreNameExist(dropType+"Aluminum")) 
-							drop = OreDictionary.getOres(dropType+"Aluminum").get(0);
+						if (OreDictionary.doesOreNameExist(dropType+"Aluminium") || OreDictionary.doesOreNameExist(dropType+"Aluminum")) 
+							drop = OreDictionary.getOres(dropType+"Aluminium").isEmpty() ? ItemStack.EMPTY : OreDictionary.getOres(dropType+"Aluminium").get(0);
+							if (drop == ItemStack.EMPTY) {
+								drop = OreDictionary.getOres(dropType+"Aluminum").isEmpty() ? ItemStack.EMPTY : OreDictionary.getOres(dropType+"Aluminum").get(0);
+							}
+							if (drop == ItemStack.EMPTY) {
+								drop = OreDictionary.getOres(dropType+"Bauxite").isEmpty() ? ItemStack.EMPTY : OreDictionary.getOres(dropType+"Bauxite").get(0);
+							}
+							
 					} else
 					if (sample.getOre().equals("Uranium") || sample.getOre().equals("Yellorium")) {
-						if (OreDictionary.doesOreNameExist(dropType+"Uranium")) 
-							drop = OreDictionary.getOres(dropType+"Uranium").get(0);
-						if (OreDictionary.doesOreNameExist(dropType+"Yellorium")) 
-							drop = OreDictionary.getOres(dropType+"Yellorium").get(0);
+						if (OreDictionary.doesOreNameExist(dropType+"Uranium") || OreDictionary.doesOreNameExist(dropType+"Yellorium")) 
+							drop = OreDictionary.getOres(dropType+"Uranium").isEmpty() ? ItemStack.EMPTY : OreDictionary.getOres(dropType+"Uranium").get(0);
+						if (drop == ItemStack.EMPTY) 
+							drop = OreDictionary.getOres(dropType+"Yellorium").isEmpty() ? ItemStack.EMPTY :OreDictionary.getOres(dropType+"Yellorium").get(0);
 					} else
 					if (OreDictionary.doesOreNameExist(dropType+sample.getOre())) 
-							drop = OreDictionary.getOres(dropType+sample.getOre()).get(0);
+							drop = OreDictionary.getOres(dropType+sample.getOre()).isEmpty()? ItemStack.EMPTY : OreDictionary.getOres(dropType+sample.getOre()).get(0);
 				}else {
 					
 					// Credits: GoryMoon https://github.com/GoryMoon/HorsePower/blob/1.12/src/main/java/se/gory_moon/horsepower/util/Utils.java#L117
@@ -110,7 +115,7 @@ public class BlockInit {
 			} else {
 				if (dropType.equals("nugget") || dropType.equals("bar") || dropType.equals("dust") || dropType.equals("plate") || dropType.equals("tinyPile") || dropType.equals("block")|| dropType.equals("gem") || dropType.equals("crystal") ) {
 					if (OreDictionary.doesOreNameExist(dropType+sample.getOre())) 
-							drop = OreDictionary.getOres(dropType+sample.getOre()).get(0);
+							drop = OreDictionary.getOres(dropType+sample.getOre()).isEmpty() ? ItemStack.EMPTY : OreDictionary.getOres(dropType+sample.getOre()).get(0);
 				}else {
 					
 					// Credits: GoryMoon https://github.com/GoryMoon/HorsePower/blob/1.12/src/main/java/se/gory_moon/horsepower/util/Utils.java#L117

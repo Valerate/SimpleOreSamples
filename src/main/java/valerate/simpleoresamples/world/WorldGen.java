@@ -32,6 +32,7 @@ public class WorldGen implements IWorldGenerator {
 			int oreSamplesToCreate = Config.oreCounterEnabled ? COUNTER.get(ore)/Config.oresPerSample : Config.samplesPerOrePerChunk;
 
 			if (BlockInit.SAMPLEBLOCKORE.containsKey(ore)) {
+				if (Config.samplesPerOrePerChunk == 0) break;
 				for (int i = 0;  i < Math.random()*Math.min(Config.samplesPerOrePerChunk,oreSamplesToCreate)+1 ;i++) {
 					int x = (chunkX << 4) + 8 +  random.nextInt(16);
 					int z = (chunkZ << 4) + 8 + random.nextInt(16);
@@ -39,6 +40,7 @@ public class WorldGen implements IWorldGenerator {
 				}
 
 			}else if (BlockInit.SAMPLEBLOCKGEM.containsKey(ore)) {
+				if (Config.samplesPerOrePerChunk == 0) break;
 				for (int i = 0;  i < Math.random()*Math.min(Config.samplesPerOrePerChunk,oreSamplesToCreate)+1 ;i++) {
 					int x = (chunkX << 4) + 8 +  random.nextInt(16);
 					int z = (chunkZ << 4) + 8 + random.nextInt(16);
