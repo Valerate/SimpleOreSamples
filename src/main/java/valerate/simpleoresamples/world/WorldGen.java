@@ -6,12 +6,14 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import valerate.simpleoresamples.Config;
+import valerate.simpleoresamples.blocks.SampleBlockGem;
+import valerate.simpleoresamples.blocks.SampleBlockOre;
 import valerate.simpleoresamples.init.BlockInit;
 public class WorldGen implements IWorldGenerator {
 
@@ -22,48 +24,44 @@ public class WorldGen implements IWorldGenerator {
 	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,IChunkProvider chunkProvider) {
-		if (!Config.dimension_whitelist.contains(world.provider.getDimension())) {
+		if (!Config.dimension_whitelist.contains(world.provider.getDimension()) || Config.samplesPerOrePerChunk == 0) {
 			return;
 		}
 		
-		COUNTER = scanChunk(chunkX, chunkZ, world);
+		COUNTER = scanChunk(world.getChunkFromChunkCoords(chunkX, chunkZ));
 		
 		for (String ore: COUNTER.keySet()) {
 			int oreSamplesToCreate = Config.oreCounterEnabled ? COUNTER.get(ore)/Config.oresPerSample : Config.samplesPerOrePerChunk;
 
-			if (BlockInit.SAMPLEBLOCKORE.containsKey(ore)) {
-				if (Config.samplesPerOrePerChunk == 0) break;
+			SampleBlockOre sampleOre = BlockInit.SAMPLEBLOCKORE.get(ore);
+			SampleBlockGem sampleGem = BlockInit.SAMPLEBLOCKGEM.get(ore);
+			
+			if (sampleOre != null) {
 				for (int i = 0;  i < Math.random()*Math.min(Config.samplesPerOrePerChunk,oreSamplesToCreate)+1 ;i++) {
 					int x = (chunkX << 4) + 8 +  random.nextInt(16);
 					int z = (chunkZ << 4) + 8 + random.nextInt(16);
-					BlockInit.SAMPLEBLOCKORE.get(ore).placeSample(world, x, z);
+					sampleOre.placeSample(world, x, z);
 				}
 
-			}else if (BlockInit.SAMPLEBLOCKGEM.containsKey(ore)) {
-				if (Config.samplesPerOrePerChunk == 0) break;
+			}else if (sampleGem != null) {
 				for (int i = 0;  i < Math.random()*Math.min(Config.samplesPerOrePerChunk,oreSamplesToCreate)+1 ;i++) {
 					int x = (chunkX << 4) + 8 +  random.nextInt(16);
 					int z = (chunkZ << 4) + 8 + random.nextInt(16);
-					BlockInit.SAMPLEBLOCKGEM.get(ore).placeSample(world, x, z);
+					sampleGem.placeSample(world, x, z);
 				}
 			}
 			
 		}
 	}
 	
-	public HashMap<String, Integer> scanChunk(int cx, int cz, World world) {
+	public HashMap<String, Integer> scanChunk(Chunk chunk) {
 		HashMap<String, Integer> counter = new HashMap<String, Integer>();
-		IBlockState bs;
-		Block b;
-		int x = cx << 4;
-		int z = cz << 4;
 		
 		for (int i = 1; i <= 256; i++) {
 			for (int j = 0; j < 16; j++) {
 				for (int k = 0; k < 16; k++) {
-
-					bs = world.getBlockState((new BlockPos(x + j, i, z+ k)));
-					b = bs.getBlock();
+					IBlockState bs = chunk.getBlockState(j, i, k);
+					Block b = bs.getBlock();
 
 					if (b == Blocks.AIR || b == Blocks.STONE || b == Blocks.DIRT || b == Blocks.GRAVEL) {
 						continue;
@@ -72,8 +70,12 @@ public class WorldGen implements IWorldGenerator {
 					String name = SAMPLES.get(bs);
 					
 					if (name != null) {
-						if (counter.containsKey(name)) {
-							if (Config.oreCounterEnabled) counter.replace(name, counter.get(name), counter.get(name)+1);
+						Integer count = counter.get(name);
+						
+						if (count != null) {
+							if (Config.oreCounterEnabled) {
+								counter.put(name, count + 1);
+							}
 						}else {
 							counter.put(name, 1);
 						}
