@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.creativetab.CreativeTabs;
@@ -74,7 +73,6 @@ public class SampleBlockGem extends Block implements IHasModel {
 		BlockPos surface = world.getTopSolidOrLiquidBlock(new BlockPos(x, 64, z));
 		if (surface.getY() > 1 && surface.getY() < 255) {
 			if (world.isAirBlock(surface) && this.canPlaceBlockAt(world, surface)) {
-				Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getTexture(world.getBlockState(new BlockPos(x, surface.getY()-1, z)));
 				world.setBlockState(surface, this.getDefaultState());
 			}
 		}
