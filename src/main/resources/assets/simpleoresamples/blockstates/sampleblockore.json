@@ -9,7 +9,7 @@
     }
   },
   "variants": {
-	"normal": 
+	"normal":
 		[
 			{ "model":"simpleoresamples:sample" },
 			{ "model":"simpleoresamples:sample", "y": 90 },

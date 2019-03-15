@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import valerate.simpleoresamples.Config;
 import valerate.simpleoresamples.SimpleOreSamples;
+import valerate.simpleoresamples.blocks.SampleBlock;
 import valerate.simpleoresamples.init.BlockInit;
 import valerate.simpleoresamples.init.ItemInit;
 import valerate.simpleoresamples.world.OreDict;
@@ -33,7 +34,7 @@ public class RegistryHandler {
 	@SubscribeEvent
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 		BlockInit.readConfig();
-		event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0]));
+		event.getRegistry().registerAll(BlockInit.SAMPLEBLOCKS.values().toArray(new SampleBlock[0]));
 	}
 	
 	@SubscribeEvent
@@ -46,13 +47,10 @@ public class RegistryHandler {
 		
 		for (Item item: ItemInit.ITEMS) {
 			SimpleOreSamples.proxy.registerItemRenderer(item);
-
 		}
 		
-		for (Block block: BlockInit.BLOCKS) {
-			if (block instanceof IHasModel) {
-				((IHasModel)block).registerModels();
-			}
+		for (SampleBlock block: BlockInit.SAMPLEBLOCKS.values()) {
+			block.registerModels();
 		}
 	}
 	
