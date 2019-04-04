@@ -14,6 +14,7 @@ public class Config {
 	public static int samplesPerOrePerChunk;
 	public static int oresPerSample;
 	public static boolean oreCounterEnabled;
+	public static float oreSampleChance;
 	public static Set<Integer> dimension_whitelist = new HashSet<>();
 	public static Set<String> oresToMakeSampleOf = new HashSet<>();
 	private static Configuration config;
@@ -30,6 +31,7 @@ public class Config {
 		oreCounterEnabled = config.getBoolean("OreInChunkCounter" , category, true , "Count ores in chunk and control the amount of samples thereafter Will not exceed oresPerSample config");
 		samplesPerOrePerChunk = config.getInt("MaxSamplesPerOrePerChunk", category, 3, 0, 16, "Amount of samples per chunk to try to generate per entry in the ore samples category");
 		oresPerSample = config.getInt("OreNeededForSample", category, 15, 0, 65535, "Amount of ores in a chunk required to create a surface sample of said ore");
+		oreSampleChance = config.getFloat("OreSampleChance", category, 0.5f, 0.0f, 1.0f, "Chance that a given ore sample will be placed (1 = 100%)");
 		String[] oreSamples = config.get(category, "Ores samples", new String[] {		
 						"Iron|11571064|ore|nugget", "Coal|3617582|ore|minecraft:coal:0", "Gold|16435247|ore|nugget", "Copper|15888396|ore|nugget",
 						"Tin|13421772|ore|nugget", "Silver|14744063|ore|nugget", "Lead|4745077|ore|nugget","Uranium|7985693|ore|nugget",
